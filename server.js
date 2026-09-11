@@ -4,11 +4,15 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const path = require('path');
 const { User, Internship, Job } = require('./models');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.get('/', (_req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/styles.css', (_req, res) => res.sendFile(path.join(__dirname, 'styles.css')));
+app.get('/app.js', (_req, res) => res.sendFile(path.join(__dirname, 'app.js')));
 
 let databaseConnection;
 const connectDatabase = async () => {
